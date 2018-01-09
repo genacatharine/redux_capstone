@@ -10,8 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar />
-        {/* <HikeList /> */}
-        {/* <HikeDetail /> */}
+        <HikeList />
       </div>
     );
   }

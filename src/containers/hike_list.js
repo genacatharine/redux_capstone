@@ -1,40 +1,14 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-// import { submitAddress } from '../actions/index'
-// import { bindActionCreators } from 'redux'
-//
-//
-// class HikeList extends Component {
-//   renderList(){
-//     return this.props.hikes.map((hike)=>{
-//       return(
-//         <li
-//           onClick={()=> this.props.submitAddress(hike)}
-//           key={hike.name}>
-//           {hike.name}
-//         </li>
-//       )
-//     })
-//   }
-//   render (){
-//     return (
-//       <div>
-//       {/* <input type="submit"></input> */}
-//       <ul>
-//         {this.renderList()}
-//       </ul>
-//     </div>
-//     )
-//   }
-// }
-// function mapStateToProps(state) {
-//   return {
-//     hikes: state.hikes
-//   }
-// }
-//
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({ submitAddress: submitAddress}, dispatch)
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(HikeList)
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Table } from 'react-bootstrap'
+
+class HikeList extends Component {
+  render () {
+    return this.props.hikes.length > 0
+      ? <ul>{this.props.hikes[0].data.map(x => <li key={x.id}>{x.name}</li>)}</ul>
+      : <p>Enter a location</p>
+    }
+}
+
+export default connect(({ hikes }) => ({hikes: hikes}))(HikeList)
