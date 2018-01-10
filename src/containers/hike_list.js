@@ -24,7 +24,7 @@ class HikeList extends Component {
 
     )}
     else {
-      return <p>Enter a location</p>
+      return <p>The Hike Search Engine For the Token Coloradoan</p>
     }
     // return this.props.hikes.length > 0
     //   ? <ul>{this.props.hikes[0].data.map(x => <li key={x.id}>{x.name}</li>)}</ul>

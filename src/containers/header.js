@@ -6,6 +6,7 @@ class Header extends Component {
   render() {
     return (
       <div className="navbar-container">
+        <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>

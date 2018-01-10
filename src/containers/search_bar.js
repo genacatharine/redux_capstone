@@ -35,6 +35,7 @@ class SearchBar extends Component {
       <div>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
+
         <div className="homepage-container">
           <div className="homepage-img-container">
             <Header/>
