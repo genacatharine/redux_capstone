@@ -37,23 +37,23 @@ class SearchBar extends Component {
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
         <div className="homepage-container">
           <div className="homepage-img-container">
-            <Header />
-        <h1>
-          MY HIKING JOURNAL
-        </h1>
-        <h5>
-          Create your very own hiking diary! Find hiking trails, add them to your To-Hike list, upload photos and blog about them!
-        </h5>
-        <form onSubmit={this.onFormSubmit} className="input-group">
-          <FormControl placeholder="Enter your location here" className="form-control" value={this.state.term} onChange={this.onInputChange}/>
-          <span className="input-group-btn">
-            <Button type="submit" className="btn btn-secondary">Submit</Button>
-          </span>
-        </form>
-        <HikeList />
+            <Header/>
+            <h1>
+              MY HIKING JOURNAL
+            </h1>
+            <h5>
+              Create your very own hiking diary! Find hiking trails, add them to your To-Hike list, upload photos and blog about them!
+            </h5>
+            <form onSubmit={this.onFormSubmit} className="input-group">
+              <FormControl placeholder="Enter your location here" className="form-control" value={this.state.term} onChange={this.onInputChange}/>
+              <span className="input-group-btn">
+                <Button type="submit" className="btn btn-secondary">Submit</Button>
+              </span>
+            </form>
+            <HikeList/>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
     )
   }
 }
