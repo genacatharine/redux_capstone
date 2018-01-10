@@ -10,7 +10,7 @@ class Header extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/" class="home">My Hiking Journal</a>
+              <a href="/" className="home">My Hiking Journal</a>
             </Navbar.Brand>
             <Navbar.Toggle/>
           </Navbar.Header>

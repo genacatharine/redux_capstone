@@ -7,34 +7,45 @@ import {
   Button,
   ControlLabel
 } from 'react-bootstrap'
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {registerUser} from '../actions'
 
-class Register extends Component {
+class Register extends React.Component {
+
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      user: {
-        email: '',
-        password: ''
-      },
-      submitted: false
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+      email: '',
+      password: ''
+    }
   }
-  handleSubmit(event) {
-      event.preventDefault();
 
-}
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let email = document.getElementById('email-input').value
+    let password = document.getElementById('password-input').value
+    console.log(email, password)
+    let credentials = {
+      email,
+      password
+    }
+    console.log(credentials)
+    this.props.registerUser(credentials);
+  }
 
-    render() {
-      return (
+  render() {
+    return (
+      <div>
+        <h1>Register</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
             </Col>
             <Col sm={10}>
-              <FormControl type="email" placeholder="Email"/>
+              <input id="email-input" name="email" type="email" placeholder="Email"/>
             </Col>
           </FormGroup>
 
@@ -43,7 +54,7 @@ class Register extends Component {
               Password
             </Col>
             <Col sm={10}>
-              <FormControl type="password" placeholder="Password"/>
+              <input id="password-input" name="password" type="password" placeholder="Password"/>
             </Col>
           </FormGroup>
 
@@ -53,8 +64,21 @@ class Register extends Component {
             </Col>
           </FormGroup>
         </Form>
-      )
-    }
+      </div>
+    )
   }
+}
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators({ loginSuccess }, dispatch)
+// }
+// export default connect(null, mapDispatchToProps)(Login)
+const mapStateToProps = (state, {messageId}) => {
 
-  export default Register
+  return {}
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  registerUser
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

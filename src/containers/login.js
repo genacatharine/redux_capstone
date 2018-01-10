@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import {
-  Form, FormGroup,Col, FormControl, Button, ControlLabel} from 'react-bootstrap'
+  Form,
+  FormGroup,
+  Col,
+  FormControl,
+  Button,
+  ControlLabel
+} from 'react-bootstrap'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {
-  loginUser
-} from '../actions'
+import {loginUser} from '../actions'
 
 class Login extends React.Component {
 
@@ -16,17 +20,7 @@ class Login extends React.Component {
       email: '',
       password: ''
     }
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.onInputChange = this.onInputChange.bind(this)
   }
-
-  // onInputChange(event){
-  //   const field = event.target.name;
-  //   const credentials = this.state.credentials;
-  //   credentials[field] = event.target.value;
-    // return this.setState({credentials: credentials});
-
-
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -39,25 +33,19 @@ class Login extends React.Component {
     }
     console.log(credentials)
     this.props.loginUser(credentials);
-    // this.setState({credentials: credentials})
   }
 
-    render() {
-      return (
+  render() {
+    return (
+      <div>
+        <h1>Login</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
             </Col>
             <Col sm={10}>
-              <input
-                id="email-input"
-                name="email"
-                type="email"
-                placeholder="Email"
-                // value={this.state.credentials.email}
-                // onChange={this.onInputChange}
-              />
+              <input id="email-input" name="email" type="email" placeholder="Email"/>
             </Col>
           </FormGroup>
 
@@ -66,14 +54,7 @@ class Login extends React.Component {
               Password
             </Col>
             <Col sm={10}>
-              <input
-                id="password-input"
-                name="password"
-                type="password"
-                placeholder="Password"
-                // value={this.state.credentials.password}
-                // onChange={this.onInputChange}
-              />
+              <input id="password-input" name="password" type="password" placeholder="Password"/>
             </Col>
           </FormGroup>
 
@@ -83,26 +64,21 @@ class Login extends React.Component {
             </Col>
           </FormGroup>
         </Form>
-
-      )
-    }
+      </div>
+    )
   }
-  // function mapDispatchToProps(dispatch){
-  //   return bindActionCreators({ loginSuccess }, dispatch)
-  // }
-  // export default connect(null, mapDispatchToProps)(Login)
-  const mapStateToProps = (state, { messageId }) => {
+}
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators({ loginSuccess }, dispatch)
+// }
+// export default connect(null, mapDispatchToProps)(Login)
+const mapStateToProps = (state, {messageId}) => {
 
-    return {
+  return {}
+}
 
-    }
-  }
+const mapDispatchToProps = dispatch => bindActionCreators({
+  loginUser
+}, dispatch)
 
-  const mapDispatchToProps = dispatch => bindActionCreators({
-    loginUser
-  }, dispatch)
-
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

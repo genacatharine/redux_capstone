@@ -36,49 +36,34 @@ export const loginUser = (credentials) => {
       },
       body: JSON.stringify(credentials)
     })
-    // new Request('https://my-hiking-journal.herokuapp.com/login', {
-    //       method: 'POST',
-    //       headers: new Headers({
-    //         'Content-Type': 'application/json'
-    //       }),
-    //       body: JSON.stringify({auth: credentials})
-    //     });
+
     const json = await request.json()
 
-    console.log(json)
+    console.log('json', json)
 
-    // dispatch({
-    //   type: LOG_IN_SUCCESS,
-    //
-    // })
-    //
-    // return sessionApi.login(credentials).then(response => {
-    //   sessionStorage.setItem('jwt', response.jwt);
-    //   dispatch(loginSuccess());
-    // }).catch(error => {
-    //   throw(error);
-    // });
   };
 }
 
-// class sessionApi {
-//   static login(credentials) {
-//     const request = new Request('https://my-hiking-journal.herokuapp.com/login', {
-//       method: 'POST',
-//       headers: new Headers({
-//         'Content-Type': 'application/json'
-//       }),
-//       body: JSON.stringify({auth: credentials})
-//     });
-//
-//
-//     return fetch(request).then(response => {
-//       return response.json();
-//     }).catch(error => {
-//       return error;
-//     });
-//   }
-// }
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const registerUser = (credentials) => {
+  return async (dispatch) => {
+    console.log(credentials)
+
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(credentials)
+    })
+
+    const json = await request.json()
+
+    console.log('json', json)
+
+  };
+}
 
 async function request(path, method = 'GET', body = null) {
   if (body) body = JSON.stringify(body)
