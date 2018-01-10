@@ -13,11 +13,13 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <div>
-        <Route path='/' component={SearchBar} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-      </div>
+
+          <div>
+          <Route path='/' component={SearchBar} />
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+        </div>
+
       </Router>
     );
   }

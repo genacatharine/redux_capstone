@@ -5,8 +5,20 @@ import { Table } from 'react-bootstrap'
 import './hike_list.css'
 
 class HikeList extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   render () {
-    if (this.props.hikes.length > 0) {
+    console.log(Object.keys(this.props.hikes.hikes))
+    let hikes = []
+    for (let key in this.props.hikes.hikes) {
+      let hike = this.props.hikes.hikes[key]
+      hikes.push(hike)
+    }
+    console.log(hikes.length)
+    if (hikes.length > 0) {
       return (
         <table className="table table-hover">
           <thead>
@@ -18,7 +30,7 @@ class HikeList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.hikes[0].data.map(x => <td key={x.id}>{x.name}</td>)}
+            {hikes.map(x => <td key={x.id}>{x.name}</td>)}
           </tbody>
         </table>
 
@@ -32,4 +44,18 @@ class HikeList extends Component {
   }
 }
 
-export default connect(({ hikes }) => ({hikes: hikes}))(HikeList)
+const mapStateToProps = (state, { messageId }) => {
+  const hikes = state.hikes
+  return {
+    hikes
+  }
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HikeList);
