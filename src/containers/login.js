@@ -1,27 +1,32 @@
 import React, {Component} from 'react'
 import {
-  Form,
-  FormGroup,
-  Col,
-  FormControl,
-  Button,
-  ControlLabel
-} from 'react-bootstrap'
+  Form, FormGroup,Col, FormControl, Button, ControlLabel} from 'react-bootstrap'
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import loginSuccess from '../actions/index'
 
 class Login extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      email: '',
-      password: '',
-      submitted: false
-    };
+        credentials: {email: '', password: ''}
+      }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  onInputChange(event){
+    const field = event.target.name;
+    const credentials = this.state.credentials;
+    credentials[field] = event.target.value;
+    return this.setState({credentials: credentials});
+                  }
+
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.actions.logInUser(this.state.credentials);
   }
 
     render() {
@@ -32,7 +37,13 @@ class Login extends Component {
               Email
             </Col>
             <Col sm={10}>
-              <FormControl type="email" placeholder="Email"/>
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={this.state.credentials.email}
+                onChange={this.onInputChange}
+              />
             </Col>
           </FormGroup>
 
@@ -41,7 +52,13 @@ class Login extends Component {
               Password
             </Col>
             <Col sm={10}>
-              <FormControl type="password" placeholder="Password"/>
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={this.state.credentials.password}
+                onChange={this.onInputChange}
+              />
             </Col>
           </FormGroup>
 

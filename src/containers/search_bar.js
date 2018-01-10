@@ -38,7 +38,7 @@ class SearchBar extends Component {
 
         <div className="homepage-container">
           <div className="homepage-img-container">
-            <Header/>
+            <Header />
             <h1>
               MY HIKING JOURNAL
             </h1>
