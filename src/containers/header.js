@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Navbar, NavItem, Nav } from 'react-bootstrap'
+import React, {Component} from 'react'
+import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import './header.css'
 
 class Header extends Component {
@@ -9,14 +9,12 @@ class Header extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#home" class="home">My Hiking Journal</a>
+              <a href="/" class="home">My Hiking Journal</a>
             </Navbar.Brand>
-            <Navbar.Toggle />
+            <Navbar.Toggle/>
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              {/* <Link to='/register'>Register</Link> */}
-              {/* <Link to='/login'>Login</Link> */}
               <NavItem href="/register">Register</NavItem>
               <NavItem href="/login">Login</NavItem>
             </Nav>
