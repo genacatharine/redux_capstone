@@ -12,7 +12,7 @@ export const fetchHikes = (location) => {
     const request = await fetch(url)
     const json = await request.json()
 
-    console.log('JSON IS', json.data)
+    // console.log('JSON IS', json.data)
 
     dispatch({
       type: FETCH_HIKES,
@@ -26,7 +26,7 @@ export const fetchHikes = (location) => {
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS'
 export const loginUser = (credentials) => {
   return async (dispatch) => {
-    console.log(credentials)
+    // console.log(credentials)
 
     const request = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: 'POST',
@@ -40,7 +40,7 @@ export const loginUser = (credentials) => {
     const cookies = new Cookies();
     cookies.set('mhj-jwt', body.token, {path: '/'});
     const raw = await request.status
-    console.log(raw)
+    // console.log(raw)
     if (raw===200){
       // return true;
       window.location.href = '/';
@@ -56,7 +56,7 @@ export const loginUser = (credentials) => {
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const registerUser = (credentials) => {
   return async (dispatch) => {
-    console.log(credentials)
+    // console.log(credentials)
 
     const request = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
@@ -68,7 +68,7 @@ export const registerUser = (credentials) => {
     })
 
     const raw = await request.status
-    console.log(raw)
+    // console.log(raw)
     if (raw===200){
       history.push('/login')
     }
@@ -76,6 +76,26 @@ export const registerUser = (credentials) => {
       history.push('/FourOhFour')
     }
   };
+}
+
+export const ADD_HIKE = 'ADD_HIKE'
+export const addHike = (x) => {
+  return async (dispatch) => {
+    console.log('THIS IS X', x)
+    console.log('dipatch', dispatch)
+
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(x)
+    })
+
+    const raw = await request.status
+    console.log('raw', raw)
+}
 }
 
 async function request(path, method = 'GET', body = null) {

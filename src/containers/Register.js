@@ -40,6 +40,7 @@ class Register extends React.Component {
   render() {
     return (
       <div className="registercontainer">
+        <Header />
         <h1>Register</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">

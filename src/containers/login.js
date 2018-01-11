@@ -44,6 +44,7 @@ class Login extends React.Component {
       <div className="logincontainer">
         {/* <Header /> */}
         <h1>Login</h1>
+        <Header />
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>

@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import {addHike} from '../actions/index'
 import { Table, Button } from 'react-bootstrap'
 import './hike_list.css'
 
 class HikeList extends Component {
+  constructor(props) {
+    super(props);
+    console.log('loaded');
+    this.state = {
+      addedhikes:[]
+    }
+    this.onHikeClick = this.onHikeClick.bind(this)
+  }
+  onHikeClick(event) {
+    console.log('EVENTTTTTT')
+    event.preventDefault();
+    this.props.addHike(this.state.addedhikes)
+    this.setState({addedhikes: ''})
+  }
+
+
   render () {
     console.log(Object.keys(this.props.hikes.hikes))
     let hikes = []
@@ -32,7 +49,7 @@ class HikeList extends Component {
               <tr><td data-hike-id="hikename" key={x.id}>{x.name}</td>
               <td>{x.distance_in_meters}</td>
               <td><a href="http://maps.google.com/?q=${x.geometry.coordinates.reverse()}" target="_blank">Link to Map</a></td>
-              <td><a href="#" class="addToHikeList" data-hike-id={x.id}>Add to To-Hike List</a></td>
+              <td><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to To-Hike List</a></td>
               </tr>
             )}
           </tbody>
@@ -54,7 +71,7 @@ const mapStateToProps = (state, { messageId }) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-
+addHike
 }, dispatch)
 
 export default connect(
