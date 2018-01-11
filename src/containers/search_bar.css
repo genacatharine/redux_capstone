@@ -1,28 +1,27 @@
-.search {
+/*.search {
   text-align:center;
   font-color:white;
-}
+}*/
 
 input {
-  color: black !important
+  color: black !important;
+  width: 30%;
+  text-align: center;
 }
 
-.homepage-img-container {
-  background-image: url("https://odysseyonline-img.rbl.ms/simage/https%3A%2F%2Faz616578.vo.msecnd.net%2Ffiles%2F2016%2F06%2F12%2F636012921623469369390065181_article%2520pic.jpeg/2000%2C2000/%2B%2FLU%2BMUYYLOM0xZl/img.jpeg");
-  height: 100vh;
-  background-attachment: fixed;
-  /*background-position: center;*/
-  /*background-repeat: no-repeat;*/
-  background-size: cover;
-  overflow: hidden;
-}
 .homepage-container{
   font-family: 'Permanent Marker';
   text-align: center !important;
+  background-image: url("https://odysseyonline-img.rbl.ms/simage/https%3A%2F%2Faz616578.vo.msecnd.net%2Ffiles%2F2016%2F06%2F12%2F636012921623469369390065181_article%2520pic.jpeg/2000%2C2000/%2B%2FLU%2BMUYYLOM0xZl/img.jpeg");
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
 }
 
-.search-container {
-  margin-top: 15%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white !important;
+.searchcontainer {
+padding-top: 15%;
+}
+h1 {
+  font-size: 50px !important;
 }

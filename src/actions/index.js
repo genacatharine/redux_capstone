@@ -12,12 +12,13 @@ export const fetchHikes = (location) => {
     const request = await fetch(url)
     const json = await request.json()
 
-    console.log(json)
+    console.log('JSON IS', json.data)
 
     dispatch({
       type: FETCH_HIKES,
       payload: json.data
     })
+
   }
 
 }

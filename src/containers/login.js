@@ -73,10 +73,7 @@ class Login extends React.Component {
     )
   }
 }
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({ loginSuccess }, dispatch)
-// }
-// export default connect(null, mapDispatchToProps)(Login)
+
 const mapStateToProps = createStructuredSelector({
   user:loginUser
 })
