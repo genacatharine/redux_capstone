@@ -3,7 +3,6 @@ import {
   Form,
   FormGroup,
   Col,
-  FormControl,
   Button,
   ControlLabel
 } from 'react-bootstrap'
@@ -13,7 +12,7 @@ import {registerUser} from '../actions'
 import Header from './header'
 import './register.css'
 
-class Register extends React.Component {
+class Register extends Component {
 
   constructor(props) {
     super(props)
@@ -41,7 +40,6 @@ class Register extends React.Component {
     return (
       <div className="registercontainer">
         <Header />
-        <h1>Register</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>

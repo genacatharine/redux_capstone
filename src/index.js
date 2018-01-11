@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import store from './store'
 import App from './App';
-import reducers from './reducers';
+// import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import ReduxPromise from 'redux-promise'
 import 'bootstrap/dist/css/bootstrap.css';

@@ -1,7 +1,8 @@
-.navbar-container {
+.navbar-container, .navbar-default, .navbar-brand {
   /*font-family: 'Spinnaker', sans-serif;*/
   font-family: 'Quicksand', sans-serif;
-   background:transparent;
+   /*background:transparent;*/
+   color:black important;
   /*border: 0 !important;*/
   /*box-shadow: none !important;*/
   /*font-weight: bold !important;*/

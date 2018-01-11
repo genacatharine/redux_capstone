@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import './header.css'
-import { Link, IndexLink } from 'react-router';
 import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 
@@ -14,8 +13,9 @@ class Header extends Component {
   }
   componentWillMount(){
     const cookies = new Cookies();
+    console.log(cookies)
     const myCookie = Boolean(cookies.get('mhj-jwt'));
-    console.log(myCookie);
+    console.log('cookie', myCookie)
     if(myCookie){
       this.setState({
         authorized:true

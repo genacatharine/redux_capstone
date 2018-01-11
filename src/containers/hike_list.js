@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {addHike} from '../actions/index'
-import { Table, Button } from 'react-bootstrap'
 import './hike_list.css'
 
 class HikeList extends Component {
@@ -27,14 +26,12 @@ class HikeList extends Component {
     let hikes = []
     for (let key in this.props.hikes.hikes) {
       let hike = this.props.hikes.hikes[key]
-      let trailLocation = hike.geometry.coordinates.reverse()
       hikes.push(hike)
       // console.log(hikes)
     }
     if (hikes.length > 0) {
       return (
         <div className="resultslistcontainer">
-          <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"></link>
         <table className="table table-hover">
           <thead>
             <tr>

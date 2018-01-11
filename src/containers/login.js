@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 import {loginUser} from '../actions'
 import Header from './header'
 
-class Login extends React.Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
@@ -42,8 +42,6 @@ class Login extends React.Component {
   render() {
     return (
       <div className="logincontainer">
-        {/* <Header /> */}
-        <h1>Login</h1>
         <Header />
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">

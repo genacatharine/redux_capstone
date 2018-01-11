@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import history from '../containers/History'
 import Cookies from 'universal-cookie';
 
@@ -11,9 +11,7 @@ export const fetchHikes = (location) => {
     // const request = axios.get(url)
     const request = await fetch(url)
     const json = await request.json()
-
     // console.log('JSON IS', json.data)
-
     dispatch({
       type: FETCH_HIKES,
       payload: json.data
@@ -57,7 +55,6 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const registerUser = (credentials) => {
   return async (dispatch) => {
     // console.log(credentials)
-
     const request = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       headers: {
@@ -81,10 +78,9 @@ export const registerUser = (credentials) => {
 export const ADD_HIKE = 'ADD_HIKE'
 export const addHike = (x) => {
   return async (dispatch) => {
-    console.log('THIS IS X', x)
-    console.log('dipatch', dispatch)
 
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
+
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/:id`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

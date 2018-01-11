@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchHikes} from '../actions/index'
-import {FormControl, Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import './search_bar.css'
 import Header from './header.js'
 import HikeList from './hike_list.js'
@@ -11,7 +11,6 @@ import Cookies from 'universal-cookie';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    console.log('loaded');
     this.state = {
       term: '',
       authorized: false
