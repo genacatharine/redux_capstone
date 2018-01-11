@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import './hike_list.css'
 
 class HikeList extends Component {
-  // 
+  //
   // constructor(props) {
   //   super(props)
   // }
@@ -15,10 +15,13 @@ class HikeList extends Component {
     let hikes = []
     for (let key in this.props.hikes.hikes) {
       let hike = this.props.hikes.hikes[key]
+      let trailLocation = hike.geometry.coordinates.reverse()
       hikes.push(hike)
+      console.log(hikes)
     }
     if (hikes.length > 0) {
       return (
+        <div className="resultslistcontainer">
         <table className="table table-hover">
           <thead>
             <tr>
@@ -29,9 +32,16 @@ class HikeList extends Component {
             </tr>
           </thead>
           <tbody>
-            {hikes.map(x => <td key={x.id}>{x.name}</td>)}
+            {hikes.map(x =>
+              <tr><td key={x.id}>{x.name}</td>
+              <td>{x.distance_in_meters}</td>
+              <td><a href="http://maps.google.com/?q=${x.geometry.coordinates.reverse()}" target="_blank">Link to Map</a></td>
+              <td><Button>Add to To-Hike List</Button></td>
+              </tr>
+            )}
           </tbody>
         </table>
+      </div>
 
     )}
     else {

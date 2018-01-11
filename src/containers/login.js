@@ -35,14 +35,14 @@ class Login extends React.Component {
     }
     const loggedIn = await this.props.loginUser(credentials);
     if(loggedIn){
-      
+
     }
   }
 
   render() {
     return (
       <div className="logincontainer">
-        <Header />
+        {/* <Header /> */}
         <h1>Login</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
