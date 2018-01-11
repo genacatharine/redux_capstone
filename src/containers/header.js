@@ -13,7 +13,7 @@ class Header extends Component {
   }
   componentWillMount(){
     const cookies = new Cookies();
-    console.log(cookies)
+    console.log('DACOOKIE', cookies)
     const myCookie = Boolean(cookies.get('mhj-jwt'));
     console.log('cookie', myCookie)
     if(myCookie){

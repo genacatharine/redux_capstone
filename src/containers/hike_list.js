@@ -22,7 +22,7 @@ class HikeList extends Component {
 
 
   render () {
-    console.log(Object.keys(this.props.hikes.hikes))
+    // console.log(Object.keys(this.props.hikes.hikes))
     let hikes = []
     for (let key in this.props.hikes.hikes) {
       let hike = this.props.hikes.hikes[key]
@@ -45,7 +45,7 @@ class HikeList extends Component {
             {hikes.map(x =>
               <tr><td data-hike-id="hikename" key={x.id}>{x.name}</td>
               <td>{x.distance_in_meters}</td>
-              <td><a href="http://maps.google.com/?q=${x.geometry.coordinates.reverse()}" target="_blank">Link to Map</a></td>
+              <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
               <td><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to To-Hike List</a></td>
               </tr>
             )}
