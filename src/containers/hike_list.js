@@ -5,10 +5,10 @@ import { Table } from 'react-bootstrap'
 import './hike_list.css'
 
 class HikeList extends Component {
-
-  constructor(props) {
-    super(props)
-  }
+  // 
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render () {
     console.log(Object.keys(this.props.hikes.hikes))
@@ -17,7 +17,6 @@ class HikeList extends Component {
       let hike = this.props.hikes.hikes[key]
       hikes.push(hike)
     }
-    console.log(hikes.length)
     if (hikes.length > 0) {
       return (
         <table className="table table-hover">
@@ -38,9 +37,6 @@ class HikeList extends Component {
     else {
       return <p>The Hike Search Engine For the Token Coloradoan</p>
     }
-    // return this.props.hikes.length > 0
-    //   ? <ul>{this.props.hikes[0].data.map(x => <li key={x.id}>{x.name}</li>)}</ul>
-    //   : <p>Enter a location</p>
   }
 }
 

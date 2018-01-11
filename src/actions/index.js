@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../containers/History'
 
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
 
@@ -20,9 +21,6 @@ export const fetchHikes = (location) => {
 
 }
 
-// export function loginSuccess() {
-//   return {type: LOG_IN_SUCCESS}
-// }
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS'
 export const loginUser = (credentials) => {
   return async (dispatch) => {
@@ -37,9 +35,15 @@ export const loginUser = (credentials) => {
       body: JSON.stringify(credentials)
     })
 
-    const json = await request.json()
-
-    console.log('json', json)
+    const raw = await request.status
+    console.log(raw)
+    if (raw===200){
+      history.push('/')
+    }
+    else {
+      history.push('/register')
+    }
+    // console.log('json', json)
 
   };
 }
@@ -58,10 +62,14 @@ export const registerUser = (credentials) => {
       body: JSON.stringify(credentials)
     })
 
-    const json = await request.json()
-
-    console.log('json', json)
-
+    const raw = await request.status
+    console.log(raw)
+    if (raw===200){
+      history.push('/login')
+    }
+    else {
+      history.push('/FourOhFour')
+    }
   };
 }
 
