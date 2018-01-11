@@ -35,13 +35,14 @@ class Header extends Component {
             </Navbar.Brand>
             <Navbar.Toggle/>
           </Navbar.Header>
-          <Navbar.Collapse>
+          {/* <Navbar.Collapse> */}
             <Nav pullRight>
-              <NavItem href="/register">Register</NavItem>
+              <NavItem href="/register">{this.state.authorized ? '' : 'Register'}</NavItem>
+              <NavItem href="/tohikelist">{this.state.authorized ? 'My To-Hike List' : ''}</NavItem>
               <NavItem href="/login">{this.state
                 .authorized ? 'Log Out' : 'Log In'}</NavItem>
             </Nav>
-          </Navbar.Collapse>
+          {/* </Navbar.Collapse> */}
         </Navbar>
       </div>
     )
