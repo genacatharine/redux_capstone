@@ -3,8 +3,27 @@ import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import './header.css'
 import { Link, IndexLink } from 'react-router';
 import {connect} from 'react-redux';
+import Cookies from 'universal-cookie';
 
 class Header extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      authorized: false
+    }
+  }
+  componentWillMount(){
+    const cookies = new Cookies();
+    const myCookie = Boolean(cookies.get('mhj-jwt'));
+    console.log(myCookie);
+    if(myCookie){
+      this.setState({
+        authorized:true
+      })
+    }else{
+      this.setState({authorized:false})
+    }
+  }
   render() {
     return (
       <div className="navbar-container">
@@ -19,7 +38,8 @@ class Header extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem href="/register">Register</NavItem>
-              <NavItem href="/login">Login</NavItem>
+              <NavItem href="/login">{this.state
+                .authorized ? 'Log Out' : 'Log In'}</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

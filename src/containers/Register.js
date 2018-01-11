@@ -10,6 +10,8 @@ import {
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {registerUser} from '../actions'
+import Header from './header'
+import './register.css'
 
 class Register extends React.Component {
 
@@ -37,7 +39,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="registercontainer">
         <h1>Register</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">

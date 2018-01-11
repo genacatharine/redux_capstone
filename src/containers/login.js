@@ -8,13 +8,16 @@ import {
   ControlLabel
 } from 'react-bootstrap'
 import {bindActionCreators} from 'redux';
+import { createStructuredSelector } from 'reselect';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions'
+import Header from './header'
 
 class Login extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+    console.log(this.props);
 
     this.state = {
       email: '',
@@ -22,22 +25,24 @@ class Login extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     let email = document.getElementById('email-input').value
     let password = document.getElementById('password-input').value
-    console.log(email, password)
     let credentials = {
       email,
       password
     }
-    console.log(credentials)
-    this.props.loginUser(credentials);
+    const loggedIn = await this.props.loginUser(credentials);
+    if(loggedIn){
+      
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className="logincontainer">
+        <Header />
         <h1>Login</h1>
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
@@ -72,10 +77,9 @@ class Login extends React.Component {
 //   return bindActionCreators({ loginSuccess }, dispatch)
 // }
 // export default connect(null, mapDispatchToProps)(Login)
-const mapStateToProps = (state, {messageId}) => {
-
-  return {}
-}
+const mapStateToProps = createStructuredSelector({
+  user:loginUser
+})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   loginUser

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../containers/History'
+import Cookies from 'universal-cookie';
 
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
 
@@ -33,12 +34,15 @@ export const loginUser = (credentials) => {
         'Accept': 'application/json',
       },
       body: JSON.stringify(credentials)
-    })
-
+    });
+    const body = await request.json();
+    const cookies = new Cookies();
+    cookies.set('mhj-jwt', body.token, {path: '/'});
     const raw = await request.status
     console.log(raw)
     if (raw===200){
-      history.push('/')
+      // return true;
+      window.location.href = '/';
     }
     else {
       history.push('/register')

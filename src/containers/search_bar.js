@@ -6,13 +6,15 @@ import {FormControl, Button} from 'react-bootstrap'
 import './search_bar.css'
 import Header from './header.js'
 import HikeList from './hike_list.js'
+import Cookies from 'universal-cookie';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
+    console.log('loaded');
     this.state = {
-      term: ''
+      term: '',
+      authorized: false
     }
 
     this.onInputChange = this.onInputChange.bind(this)
@@ -29,7 +31,6 @@ class SearchBar extends Component {
     this.props.fetchHikes(this.state.term)
     this.setState({term: ''})
   }
-
   render() {
     return (
       <div>
@@ -38,7 +39,7 @@ class SearchBar extends Component {
 
         <div className="homepage-container">
           <div className="homepage-img-container">
-            <Header />
+            <Header/>
             <h1>
               MY HIKING JOURNAL
             </h1>
