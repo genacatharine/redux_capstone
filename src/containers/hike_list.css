@@ -13,3 +13,6 @@ th {
   width: 50%;
   margin: 0 auto;
 }
+.toasty {
+  background-color: black !important;
+}

@@ -4,7 +4,9 @@ import './header.css'
 import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 
-const Header = (props) => (
+const Header = (props) => {
+  console.log(props);
+  return (
   <div className="navbar-container">
     <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
     <Navbar fluid collapseOnSelect>
@@ -16,13 +18,12 @@ const Header = (props) => (
         <Nav pullRight>
           <NavItem href="/register">{props.auth ? '' : 'Register'}</NavItem>
           <NavItem href="/tohikelist">{props.auth ? 'My Hike List' : ''}</NavItem>
-          <NavItem href="/login">{props
-            .auth ? 'Log Out' : 'Log In'}</NavItem>
+          <NavItem href="/login">{props.auth ? 'Log Out' : 'Log In'}</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   </div>
-)
+)}
 
 function mapStateToProps(state) {
   return { auth: state.auth }

@@ -5,8 +5,9 @@ import cloudinary from 'cloudinary-core';
 import './tohikelist.css'
 
 class toHikeList extends Component {
+
   uploadWidget() {
-    cloudinary.openUploadWidget({
+    window.cloudinary.openUploadWidget({
       cloud_name: 'db77jltpp',
       upload_preset: 'bqq0uexy',
       tags: ['xmas']
@@ -22,10 +23,13 @@ class toHikeList extends Component {
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
         <Header/>
         <h1>My Hike List</h1>
-        <ul></ul>
+
         <div className="upload">
+          <ol>
+            <li>1. Bear Lake Trail</li>
+          </ol>
           <br/>
-          <input placeholder="Type Blog Post Here"></input>
+          <input className="blog" placeholder="Type Blog Post Here"></input>
           <button>Add Blog</button>
           <br/>
           <br/>

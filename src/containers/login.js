@@ -12,6 +12,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions'
 import Header from './header'
+import './login.css'
 
 class Login extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Login extends Component {
     }
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = async(event) => {
     event.preventDefault();
     let email = document.getElementById('email-input').value
     let password = document.getElementById('password-input').value
@@ -46,40 +47,24 @@ class Login extends Component {
   render() {
     return (
       <div className="logincontainer">
-        <Header />
-        <Form horizontal onSubmit={this.handleSubmit}>
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              Email
-            </Col>
-            <Col sm={10}>
-              <input id="email-input" name="email" type="email" placeholder="Email"/>
-            </Col>
-          </FormGroup>
+        <Header/>
+        <h1>Log In</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>Email</label>
+          <input id="email-input" name="email" type="email" placeholder="Email"/>
+          <br/>
+          <label>Password</label>
+          <input id="password-input" name="password" type="password" placeholder="Password"/>
 
-          <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} sm={2}>
-              Password
-            </Col>
-            <Col sm={10}>
-              <input id="password-input" name="password" type="password" placeholder="Password"/>
-            </Col>
-          </FormGroup>
+          <button type="submit">Sign in</button>
 
-          <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit">Sign in</Button>
-            </Col>
-          </FormGroup>
-        </Form>
+        </form>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-})
+const mapStateToProps = (state) => ({auth: state.auth})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   loginUser

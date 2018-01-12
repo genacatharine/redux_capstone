@@ -21,6 +21,7 @@ class HikeList extends Component {
 
     this.props.addHike(this.state.addedhikes, clientToken)
     this.setState({addedhikes: ''})
+    
   }
 
   notify = () => {
@@ -53,7 +54,7 @@ class HikeList extends Component {
               <tr key={x.id}><td data-hike-id="hikename">{x.name}</td>
                 <td>{x.distance_in_meters}</td>
                 <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
-                <td><button onClick={this.notify}>Toast working</button><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to To-Hike List</a></td>
+                <td><button className="toasty" onClick={this.notify}>Add to Hike List</button><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Click Here</a></td>
               </tr>
             )}
           </tbody>

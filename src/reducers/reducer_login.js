@@ -2,10 +2,7 @@ import {
   LOG_IN_SUCCESS
 } from '../actions';
 
-const initialState = {
-  email: '',
-  password: ''
-}
+const initialState = false
 
 export default (state = initialState, action) => {
   switch(action.type) {
