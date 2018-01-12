@@ -38,7 +38,7 @@ class Header extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem href="/register">{this.state.authorized ? '' : 'Register'}</NavItem>
-              <NavItem href="/tohikelist">{this.state.authorized ? 'My To-Hike List' : ''}</NavItem>
+              <NavItem href="/tohikelist">{this.state.authorized ? 'My Hike List' : ''}</NavItem>
               <NavItem href="/login">{this.state
                 .authorized ? 'Log Out' : 'Log In'}</NavItem>
             </Nav>

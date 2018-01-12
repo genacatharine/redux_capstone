@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Header from './header'
 import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 import cloudinary from 'cloudinary-core';
+import './tohikelist.css'
 
 class toHikeList extends Component {
   uploadWidget() {
@@ -17,8 +18,11 @@ class toHikeList extends Component {
   render() {
     return (
       <div className="tohikelistcontainer">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
         <Header/>
-        <h1>My To-Hike List</h1>
+        <h1>My Hike List</h1>
+        <ul></ul>
         <div className="upload">
           <br/>
           <input placeholder="Type Blog Post Here"></input>

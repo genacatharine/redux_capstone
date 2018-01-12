@@ -78,9 +78,7 @@ export const registerUser = (credentials) => {
 export const ADD_HIKE = 'ADD_HIKE'
 export const addHike = (x) => {
   return async (dispatch) => {
-
-
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -90,8 +88,10 @@ export const addHike = (x) => {
     })
 
     const raw = await request.status
+    const cookies = new Cookies();
+    console.log(cookies.get('mhj-jwt'))
     console.log('raw', raw)
-}
+  }
 }
 
 async function request(path, method = 'GET', body = null) {
