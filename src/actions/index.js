@@ -11,7 +11,7 @@ export const fetchHikes = (location) => {
     // const request = axios.get(url)
     const request = await fetch(url)
     const json = await request.json()
-    // console.log('JSON IS', json.data)
+    console.log('JSON IS', json.data)
     dispatch({
       type: FETCH_HIKES,
       payload: json.data
@@ -80,7 +80,7 @@ export const addHike = (x) => {
   return async (dispatch) => {
 
 
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/:id`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
