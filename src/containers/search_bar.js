@@ -26,7 +26,6 @@ class SearchBar extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-
     this.props.fetchHikes(this.state.term)
     this.setState({term: ''})
   }
