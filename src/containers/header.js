@@ -13,7 +13,7 @@ class Header extends Component {
   }
   componentWillMount(){
     const cookies = new Cookies();
-    console.log('DACOOKIE', cookies)
+    console.log('DACOOKIE')
     const myCookie = Boolean(cookies.get('mhj-jwt'));
     console.log('cookie', myCookie)
     if(myCookie){
@@ -29,12 +29,12 @@ class Header extends Component {
       <div className="navbar-container">
         <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
         <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
+          {/* <Navbar.Header> */}
             <Navbar.Brand>
               <a href="/" className="home">My Hiking Journal</a>
             </Navbar.Brand>
             <Navbar.Toggle/>
-          </Navbar.Header>
+          {/* </Navbar.Header> */}
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem href="/register">{this.state.authorized ? '' : 'Register'}</NavItem>

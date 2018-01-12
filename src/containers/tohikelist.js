@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import Header from './header'
 
 class toHikeList extends Component {
   render() {
     return (
-      <h1>My To-Hike List</h1>
+      <div>
+        <Header />
+        <h1>My To-Hike List</h1>
+      </div>
+
     )
   }
 }

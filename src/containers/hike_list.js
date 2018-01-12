@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {addHike} from '../actions/index'
 import './hike_list.css'
+import { toast, ToastContainer } from 'react-toastify';
 
 class HikeList extends Component {
+
   constructor(props) {
     super(props);
     console.log('loaded');
@@ -14,13 +16,15 @@ class HikeList extends Component {
     this.onHikeClick = this.onHikeClick.bind(this)
   }
   onHikeClick(event) {
-    console.log('EVENTTTTTT')
     event.preventDefault();
     this.props.addHike(this.state.addedhikes)
     this.setState({addedhikes: ''})
   }
-
-
+  notify = () => {
+  toast.info("Hike Added! Cowabunga!", {
+      position: toast.POSITION.BOTTOM_CENTER
+    });
+}
   render () {
     // console.log(Object.keys(this.props.hikes.hikes))
     let hikes = []
@@ -44,13 +48,14 @@ class HikeList extends Component {
           <tbody>
             {hikes.map(x =>
               <tr><td data-hike-id="hikename" key={x.id}>{x.name}</td>
-              <td>{x.distance_in_meters}</td>
-              <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
-              <td><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to To-Hike List</a></td>
+                <td>{x.distance_in_meters}</td>
+                <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
+                <td><button onClick={this.notify}>Toast working</button><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to To-Hike List</a></td>
               </tr>
             )}
           </tbody>
         </table>
+        <ToastContainer />
       </div>
 
     )}
