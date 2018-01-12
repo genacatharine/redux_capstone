@@ -45,6 +45,7 @@ class SearchBar extends Component {
               <input placeholder="Enter your location here" value={this.state.term} onChange={this.onInputChange}/>
                 <Button type="submit" className="btn btn-secondary">Submit</Button>
             </form>
+
             <HikeList/>
           </div>
         </div>
@@ -52,6 +53,8 @@ class SearchBar extends Component {
     )
   }
 }
+
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({

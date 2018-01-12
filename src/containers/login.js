@@ -8,13 +8,12 @@ import {
   ControlLabel
 } from 'react-bootstrap'
 import {bindActionCreators} from 'redux';
-import { createStructuredSelector } from 'reselect';
+// import { createStructuredSelector } from 'reselect';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions'
 import Header from './header'
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     console.log(this.props);
@@ -22,6 +21,14 @@ class Login extends Component {
     this.state = {
       email: '',
       password: ''
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps);
+
+    if (nextProps.auth) {
+      this.props.history.push('/')
     }
   }
 
@@ -33,10 +40,7 @@ class Login extends Component {
       email,
       password
     }
-    const loggedIn = await this.props.loginUser(credentials);
-    if(loggedIn){
-
-    }
+    this.props.loginUser(credentials);
   }
 
   render() {
@@ -73,8 +77,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  user:loginUser
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

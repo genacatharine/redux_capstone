@@ -17,7 +17,9 @@ class HikeList extends Component {
   }
   onHikeClick(event) {
     event.preventDefault();
-    this.props.addHike(this.state.addedhikes)
+    const clientToken = localStorage.getItem('token');
+
+    this.props.addHike(this.state.addedhikes, clientToken)
     this.setState({addedhikes: ''})
   }
 
@@ -69,7 +71,8 @@ class HikeList extends Component {
 const mapStateToProps = (state, { messageId }) => {
   const hikes = state.hikes
   return {
-    hikes
+    hikes,
+    auth: state.auth,
   }
 }
 

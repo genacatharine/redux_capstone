@@ -34,19 +34,28 @@ export const loginUser = (credentials) => {
       },
       body: JSON.stringify(credentials)
     });
+
     const body = await request.json();
-    const cookies = new Cookies();
-    cookies.set('mhj-jwt', body.token, {path: '/'});
-    const raw = await request.status
-    // console.log(raw)
-    if (raw===200){
-      // return true;
-      window.location.href = '/';
-    }
-    else {
-      history.push('/register')
-    }
-    // console.log('json', json)
+
+    console.log(body);
+
+    return dispatch({
+      type: LOG_IN_SUCCESS,
+      payload: body.token,
+    })
+
+    // const cookies = new Cookies();
+    // cookies.set('mhj-jwt', body.token, {path: '/'});
+    // const raw = await request.status
+    // // console.log(raw)
+    // if (raw===200){
+    //   // return true;
+    //   window.location.href = '/';
+    // }
+    // else {
+    //   history.push('/register')
+    // }
+    // // console.log('json', json)
 
   };
 }
@@ -76,21 +85,18 @@ export const registerUser = (credentials) => {
 }
 
 export const ADD_HIKE = 'ADD_HIKE'
-export const addHike = (x) => {
+export const addHike = (x, clientToken) => {
   return async (dispatch) => {
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify(x)
+      body: JSON.stringify({ x, clientToken })
     })
 
     const raw = await request.status
-    const cookies = new Cookies();
-    console.log('COOKIES IN TO ADD LIST', cookies)
-    console.log(cookies.get('mhj-jwt'))
     console.log('raw', raw)
   }
 }
