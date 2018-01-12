@@ -89,6 +89,7 @@ export const addHike = (x) => {
 
     const raw = await request.status
     const cookies = new Cookies();
+    console.log('COOKIES IN TO ADD LIST', cookies)
     console.log(cookies.get('mhj-jwt'))
     console.log('raw', raw)
   }
