@@ -9,14 +9,26 @@
   background-size: cover;
 }
 ol {
-  list-style-type: none;
+  list-style-position: inside;
 }
 li {
-  font-size: 20px;
+  font-size: 30px;
 }
 .blog {
-
   border: 1px
   solid #999999;
   padding: 5px;
+}
+.upload {
+  padding: 20px;
+  background-color: black;
+  opacity: 0.6;
+  width: 50%;
+  margin: 0 auto;
+  width: 50%;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+button {
+  color: black !important;
 }

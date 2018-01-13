@@ -103,18 +103,18 @@ export const registerUser = (credentials) => {
 export const ADD_HIKE = 'ADD_HIKE'
 export const addHike = (x, clientToken, hikeid) => {
   return async (dispatch) => {
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
+
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/4`, {
       method: 'POST',
-      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
       body: JSON.stringify({ x, clientToken, hikeid })
     })
-
+    console.log('REQUESTTTTTTTT', request.body)
     const raw = await request.status
-    // console.log('rawwwww', raw)
+    console.log('rawwwww', raw)
   }
 }
 

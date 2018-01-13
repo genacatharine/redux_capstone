@@ -21,24 +21,26 @@ class toHikeList extends Component {
     return (
       <div className="tohikelistcontainer">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
         <Header/>
         <h1>My Hike List</h1>
 
         <div className="upload">
           <ol>
-            <li>1. Betasso Link Access</li>
-          </ol>
-          <br/>
-          <input className="blog" placeholder="Type Blog Post Here"></input>
-          <button>Add Blog</button>
-          <br/>
-          <br/>
+            <li>Betasso Link Access</li>
+
+          {/* <br/> */}
+          {/* <input className="blog" placeholder="Type Here"></input>
+          <button>Add Blog</button> */}
+          {/* <br/>
+          <br/> */}
           <button onClick={this.uploadWidget.bind(this)} className="upload-button">
             Add Image
           </button>
+          <br />
+          <button>Delete Hike</button>
+          </ol>
         </div>
-
       </div>
 
     )
