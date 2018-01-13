@@ -63,7 +63,7 @@ class HikeList extends Component {
           </thead>
           <tbody>
             {hikes.map(x =>
-              <tr key={x.id}><td data-hike-id="hikename">{x.name}</td>
+              <tr data-hike-id="hikeid" key={x.id}><td data-hike-name="hikename">{x.name}</td>
                 <td>{x.distance_in_meters}</td>
                 <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
                 <td><button className="toasty" onClick={this.notify}>Add to Hike List</button><a onClick={this.onHikeClick} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Click Here</a></td>
