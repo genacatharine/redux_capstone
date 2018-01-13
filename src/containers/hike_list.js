@@ -86,7 +86,7 @@ class HikeList extends Component {
 
     )}
     else {
-      return <div className="h3container"><h3>Create a hiking diary!<br /> Find hiking trails, add them to your To-Hike list, <br /> upload photos and blog about them!</h3></div>
+      return <div className="h3container"><h3>Create a hiking diary!<br /> Find hiking trails, add them to your Hike list, <br /> upload photos and blog about them!</h3></div>
     }
   }
 }
