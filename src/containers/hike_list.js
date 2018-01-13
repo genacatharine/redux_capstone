@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import {addHike} from '../actions/index'
 import './hike_list.css'
 import { toast, ToastContainer } from 'react-toastify';
+import { css } from 'glamor';
 
 class HikeList extends Component {
 
@@ -17,7 +18,14 @@ class HikeList extends Component {
   }
   onHikeClick(event) {
     event.preventDefault();
-    const clientToken = localStorage.getItem('token');
+    var clientToken = localStorage.getItem('token');
+    function parseJwt (token) {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace('-', '+').replace('_', '/');
+                return JSON.parse(window.atob(base64));
+            };
+    clientToken = parseJwt(clientToken)
+    clientToken = clientToken.userId
 
     this.props.addHike(this.state.addedhikes, clientToken)
     this.setState({addedhikes: ''})
@@ -26,7 +34,10 @@ class HikeList extends Component {
 
   notify = () => {
   toast.info("Hike Added! Cowabunga!", {
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.TOP_CENTER,
+      className: css({
+        background: "black"
+      })
     });
 }
   render () {

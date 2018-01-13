@@ -3,6 +3,7 @@ ul {
 }
 th {
   text-align: center !important;
+  font-weight: bold !important;
 }
 .resultslistcontainer {
   background-color: black;

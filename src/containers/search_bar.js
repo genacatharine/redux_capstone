@@ -13,7 +13,7 @@ class SearchBar extends Component {
     super(props);
     this.state = {
       term: '',
-      authorized: false
+      // authorized: false
     }
 
     this.onInputChange = this.onInputChange.bind(this)
@@ -54,7 +54,9 @@ class SearchBar extends Component {
   }
 }
 
-
+function mapStateToProps(state) {
+  return { auth: state.auth }
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({

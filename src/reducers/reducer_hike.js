@@ -1,4 +1,4 @@
-import { FETCH_HIKES} from '../actions'
+import { FETCH_HIKES } from '../actions'
 
 const initialState = {
   hikes: []
