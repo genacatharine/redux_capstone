@@ -3,6 +3,7 @@ import Header from './header'
 import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 import cloudinary from 'cloudinary-core';
 import './tohikelist.css'
+import {connect} from 'react-redux';
 
 class toHikeList extends Component {
 
@@ -26,7 +27,7 @@ class toHikeList extends Component {
 
         <div className="upload">
           <ol>
-            <li>1. Bear Lake Trail</li>
+            <li>1. Betasso Link Access</li>
           </ol>
           <br/>
           <input className="blog" placeholder="Type Blog Post Here"></input>
@@ -44,4 +45,8 @@ class toHikeList extends Component {
   }
 }
 
-export default toHikeList
+function mapStateToProps(state) {
+  return { auth: state.auth }
+}
+
+export default connect(mapStateToProps, null)(toHikeList)

@@ -68,14 +68,11 @@ class HikeList extends Component {
           </thead>
           <tbody>
             {hikes.map(x =>
-              <tr key={x.id}><td id="hikename">{x.name}</td>
+              <tr key={x.id}>
+                <td id="hikename">{x.name}</td>
                 <td>{x.distance_in_meters}</td>
                 <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
                 <td>
-                  {/* <button className="toasty" */}
-                  {/* onClick={ (e) => {this.notify(); this.onHikeClick(); */}
-                {/* }}></button> */}
-                  {/* // onClick={this.notify}>Add to Hike List</button> */}
                   <a onClick={ (e) => {this.notify(); this.onHikeClick()}} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to Hike List</a></td>
               </tr>
             )}

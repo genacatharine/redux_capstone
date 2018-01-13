@@ -6,6 +6,7 @@
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
     "cloudinary-react": "^1.0.4",
+    "jquery": "^3.2.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
