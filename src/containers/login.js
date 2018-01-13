@@ -48,6 +48,7 @@ class Login extends Component {
     return (
       <div className="logincontainer">
         <Header/>
+                <div className="innercontainer">
         <h1>Log In</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Email</label>
@@ -59,6 +60,7 @@ class Login extends Component {
           <button type="submit">Sign in</button>
 
         </form>
+      </div>
       </div>
     )
   }

@@ -40,6 +40,7 @@ class Register extends Component {
     return (
       <div className="registercontainer">
         <Header />
+        <div className="innercontainer">
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
         <label>Email</label>
@@ -53,6 +54,7 @@ class Register extends Component {
               <Button type="submit">Register</Button>
 
         </form>
+      </div>
       </div>
     )
   }

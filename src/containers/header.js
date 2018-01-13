@@ -5,10 +5,10 @@ import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 
 const Header = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
   <div className="navbar-container">
-    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
     <Navbar fluid collapseOnSelect>
         <Navbar.Brand>
           <a href="/" className="home">My Hiking Journal</a>

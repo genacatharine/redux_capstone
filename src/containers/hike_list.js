@@ -21,7 +21,7 @@ class HikeList extends Component {
 
     this.props.addHike(this.state.addedhikes, clientToken)
     this.setState({addedhikes: ''})
-    
+
   }
 
   notify = () => {
@@ -40,6 +40,7 @@ class HikeList extends Component {
     if (hikes.length > 0) {
       return (
         <div className="resultslistcontainer">
+          <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
         <table className="table table-hover">
           <thead>
             <tr>

@@ -10,15 +10,13 @@ import registerServiceWorker from './registerServiceWorker';
 import ReduxPromise from 'redux-promise'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import { CookiesProvider } from 'react-cookie';
+
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
 
 
 ReactDOM.render(
 <Provider store={store}>
-  <CookiesProvider>
     <App />
-  </CookiesProvider>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

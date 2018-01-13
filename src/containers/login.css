@@ -1,3 +1,18 @@
 .logincontainer {
   text-align: center;
+  font-family: 'Permanent Marker';
+  text-align: center !important;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
+  background-image: url('https://media.istockphoto.com/photos/hiking-legs-seaside-mountain-peak-picture-id529801411?k=6&m=529801411&s=612x612&w=0&h=iyaLaG290XET3TkpItBXeRURZO0-EyI1Q2urQDph6uc=')
+}
+
+.innercontainer {
+  width: 50%;
+  margin: 0 auto;
+  background-color: black;
+  opacity: 0.6;
+  color: white;
 }

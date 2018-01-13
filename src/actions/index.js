@@ -1,8 +1,19 @@
 // import axios from 'axios';
 import history from '../containers/History'
 import Cookies from 'universal-cookie';
+import jwt_decode from 'jwt-decode';
+
+var token = localStorage.getItem('token')
+var user = localStorage.getItem('user')
 
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
+
+var decoded = jwt_decode(token);
+
+console.log('decoded', decoded)
+console.log('user', user)
+
+
 
 export const FETCH_HIKES = 'FETCH_HIKES'
 export const fetchHikes = (location) => {
@@ -11,7 +22,7 @@ export const fetchHikes = (location) => {
     // const request = axios.get(url)
     const request = await fetch(url)
     const json = await request.json()
-    console.log('JSON IS', json.data)
+    // console.log('JSON IS', json.data)
     dispatch({
       type: FETCH_HIKES,
       payload: json.data
@@ -87,8 +98,9 @@ export const registerUser = (credentials) => {
 export const ADD_HIKE = 'ADD_HIKE'
 export const addHike = (x, clientToken) => {
   return async (dispatch) => {
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -97,7 +109,7 @@ export const addHike = (x, clientToken) => {
     })
 
     const raw = await request.status
-    console.log('raw', raw)
+    // console.log('rawwwww', raw)
   }
 }
 

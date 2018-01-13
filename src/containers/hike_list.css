@@ -16,3 +16,8 @@ th {
 .toasty {
   background-color: black !important;
 }
+
+table {
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+}
