@@ -101,7 +101,7 @@ export const registerUser = (credentials) => {
 }
 
 export const ADD_HIKE = 'ADD_HIKE'
-export const addHike = (x, clientToken) => {
+export const addHike = (x, clientToken, hikeid) => {
   return async (dispatch) => {
     const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/6`, {
       method: 'POST',
@@ -110,7 +110,7 @@ export const addHike = (x, clientToken) => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ x, clientToken })
+      body: JSON.stringify({ x, clientToken, hikeid })
     })
 
     const raw = await request.status
