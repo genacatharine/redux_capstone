@@ -29,16 +29,12 @@ export const fetchHikes = (location) => {
       type: FETCH_HIKES,
       payload: json.data
     })
-
   }
-
 }
 
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS'
 export const loginUser = (credentials) => {
   return async (dispatch) => {
-    // console.log(credentials)
-
     const request = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: 'POST',
       headers: {
@@ -56,20 +52,6 @@ export const loginUser = (credentials) => {
       type: LOG_IN_SUCCESS,
       payload: body.token,
     })
-
-    // const cookies = new Cookies();
-    // cookies.set('mhj-jwt', body.token, {path: '/'});
-    // const raw = await request.status
-    // // console.log(raw)
-    // if (raw===200){
-    //   // return true;
-    //   window.location.href = '/';
-    // }
-    // else {
-    //   history.push('/register')
-    // }
-    // // console.log('json', json)
-
   };
 }
 
@@ -85,7 +67,6 @@ export const registerUser = (credentials) => {
       },
       body: JSON.stringify(credentials)
     })
-
     const raw = await request.status
     // console.log(raw)
     if (raw===200){
@@ -100,7 +81,7 @@ export const registerUser = (credentials) => {
 export const ADD_HIKE = 'ADD_HIKE'
 // export const addHike = (clientToken, hikeid) => {
 export const addHike = (x, clientToken, id, name) => {
-  console.log('clienttoken', clientToken,'id', id)
+  // console.log('clienttoken', clientToken,'id', id)
   return async (dispatch) => {
 
     const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
@@ -118,6 +99,41 @@ export const addHike = (x, clientToken, id, name) => {
   }
 }
 
+export const VIEW_MYHIKES = 'VIEW_MYHIKES'
+export const seeHikes = (clientToken, id, name)=>{
+    // return async (dispatch) => {
+    //   // const url = ROOT_URL + location;
+    //   // const request = axios.get(url)
+    //   const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`)
+    //   const json = await request.json()
+    //   console.log('HELOOOOOO JSON', json)
+    //   dispatch({
+    //     type: VIEW_MYHIKES,
+    //     payload: json.data
+    //   })
+    // }
+    // export const getSheets = () => {
+  console.log('inside of the SheetList Action');
+  return async (dispatch) => {
+    console.log('getSheets hit')
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    // console.log('headers is: ', headers);
+    const string = await request.json()
+    // console.log('get sheets response is: ', string);
+    // console.log('string.data is: ', string[0])
+    dispatch({
+      type: VIEW_MYHIKES,
+      payload: string
+    })
+  }
+}
 
 async function request(path, method = 'GET', body = null) {
   if (body) body = JSON.stringify(body)

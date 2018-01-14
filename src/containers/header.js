@@ -4,6 +4,7 @@ import './header.css'
 import {connect} from 'react-redux';
 import Cookies from 'universal-cookie';
 
+
 const Header = (props) => {
   // console.log(props);
   return (
