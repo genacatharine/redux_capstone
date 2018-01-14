@@ -10,17 +10,20 @@ import {seeHikes} from '../actions'
 class toHikeList extends Component {
 
   componentWillMount=()=> {
-    var clientToken = localStorage.getItem('token');
 
-    function parseJwt (x) {
-          var base64Url = clientToken.split('.')[1];
-          var base64 = base64Url.replace('-', '+').replace('_', '/');
-          return JSON.parse(window.atob(base64));
-      };
-clientToken = parseJwt(clientToken)
-console.log('clientttttokenenenennenenen', clientToken.userId);
+//     function parseJwt (x) {
+//           var base64Url = clientToken.split('.')[1];
+//           var base64 = base64Url.replace('-', '+').replace('_', '/');
+//           return JSON.parse(window.atob(base64));
+//       };
+// clientToken = parseJwt(clientToken)
+// console.log('clientttttokenenenennenenen', clientToken.userId);
 
-    this.props.seeHikes(clientToken.userId)
+    const clientToken = localStorage.getItem('token');
+
+    console.log('clientToken', clientToken);
+
+    this.props.seeHikes(clientToken)
   }
 
   // uploadWidget() {
@@ -34,31 +37,25 @@ console.log('clientttttokenenenennenenen', clientToken.userId);
   // }
 
   render() {
-    let hikes = this.props
-              console.log('HIKESPROPSSSSSSS', hikes)
+    const hikes = this.props.myhikes;
+
+    if (hikes.length === 0) return <p>Loading...</p>
+
+    console.log('HIKESPROPSSSSSSS', hikes)
     return (
       <div className="tohikelistcontainer">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
         <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
         <Header/>
         <h1>My Hike List</h1>
-
-        {/* <div className="upload"> */}
-          <ol>
-
-          {/* <li>Betasso Link Access</li> */}
-          {/* <br/> */}
-          {/* <input className="blog" placeholder="Type Here"></input>
-          <button>Add Blog</button> */}
-          {/* <br/>
-          <br/> */}
-          {/* <button onClick={this.uploadWidget.bind(this)} className="upload-button">
-            Add Image
-          </button> */}
-          {/* <br />
-          <button>Delete Hike</button> */}
-          </ol>
-        {/* </div> */}
+        <div className="upload">
+          {hikes.map((hike) => {
+            console.log(hike);
+            return (
+            <li key={hike.id}>{hike.hike_name}</li>
+          )}
+          )}
+        </div>
       </div>
 
     )

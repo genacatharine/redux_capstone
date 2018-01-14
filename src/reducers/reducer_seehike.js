@@ -1,18 +1,9 @@
-import { VIEW_MYHIKES} from '../actions'
+import { VIEW_MYHIKES } from '../actions'
 
-const initialState = {
-  myhikes: []
-}
-
-export default function(state=initialState, action){
-
-  switch(action.type){
-
+export default function(state=[], action) {
+  switch(action.type) {
     case VIEW_MYHIKES:
-      console.log('test')
-      return {
-        myhikes: action.payload
-      }
+      return action.payload
   }
   return state;
 }
