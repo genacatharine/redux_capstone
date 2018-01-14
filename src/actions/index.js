@@ -100,33 +100,21 @@ export const addHike = (x, clientToken, id, name) => {
 }
 
 export const VIEW_MYHIKES = 'VIEW_MYHIKES'
-export const seeHikes = (clientToken, id, name)=>{
-    // return async (dispatch) => {
-    //   // const url = ROOT_URL + location;
-    //   // const request = axios.get(url)
-    //   const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`)
-    //   const json = await request.json()
-    //   console.log('HELOOOOOO JSON', json)
-    //   dispatch({
-    //     type: VIEW_MYHIKES,
-    //     payload: json.data
-    //   })
-    // }
-    // export const getSheets = () => {
-  console.log('inside of the SheetList Action');
+export const seeHikes = (clientToken)=>{
+  console.log('inside of the SheetList Action', clientToken);
   return async (dispatch) => {
-    console.log('getSheets hit')
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
+
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist?token=${clientToken}`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-      }
+      },
     })
     // console.log('headers is: ', headers);
     const string = await request.json()
-    // console.log('get sheets response is: ', string);
+    console.log('get sheets response is: ', string);
     // console.log('string.data is: ', string[0])
     dispatch({
       type: VIEW_MYHIKES,

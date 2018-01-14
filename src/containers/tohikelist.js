@@ -10,7 +10,17 @@ import {seeHikes} from '../actions'
 class toHikeList extends Component {
 
   componentWillMount=()=> {
-    this.props.seeHikes()
+    var clientToken = localStorage.getItem('token');
+
+    function parseJwt (x) {
+          var base64Url = clientToken.split('.')[1];
+          var base64 = base64Url.replace('-', '+').replace('_', '/');
+          return JSON.parse(window.atob(base64));
+      };
+clientToken = parseJwt(clientToken)
+console.log('clientttttokenenenennenenen', clientToken.userId);
+
+    this.props.seeHikes(clientToken.userId)
   }
 
   // uploadWidget() {
@@ -24,7 +34,7 @@ class toHikeList extends Component {
   // }
 
   render() {
-    let hikes = this.props.myhikes
+    let hikes = this.props
               console.log('HIKESPROPSSSSSSS', hikes)
     return (
       <div className="tohikelistcontainer">
