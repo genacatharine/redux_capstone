@@ -5,6 +5,7 @@ import {addHike} from '../actions/index'
 import './hike_list.css'
 import { toast, ToastContainer } from 'react-toastify';
 import { css } from 'glamor';
+import $ from 'jquery';
 
 class HikeList extends Component {
 
@@ -28,9 +29,8 @@ class HikeList extends Component {
     clientToken = parseJwt(clientToken)
     clientToken = clientToken.userId
 
-    var hikeid = document.getElementById('hikename');
-    hikeid=hikeid.innerText
-    console.log('HIKEEEEIDDDDDD', hikeid)
+    var hikeid = $(this).data("hike-id")
+    console.log('HIKEEEEIDDDDDDnumber1', hikeid)
 
     this.props.addHike(this.state.addedhikes, clientToken, hikeid)
     this.setState({addedhikes: ''})
@@ -51,7 +51,6 @@ class HikeList extends Component {
     for (let key in this.props.hikes.hikes) {
       let hike = this.props.hikes.hikes[key]
       hikes.push(hike)
-      // console.log(hikes)
     }
     if (hikes.length > 0) {
       return (
@@ -69,11 +68,14 @@ class HikeList extends Component {
           <tbody>
             {hikes.map(x =>
               <tr key={x.id}>
-                <td id="hikename">{x.name}</td>
+                <td>{x.name}</td>
                 <td>{x.distance_in_meters}</td>
                 <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
                 <td>
-                  <a onClick={ (e) => {this.notify(); this.onHikeClick()}} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to Hike List</a></td>
+                  <a onClick={ (e) => {
+                    // var hikeid = $(this).attr("data-hike-id")
+                    // console.log('HIKEEEEIDDDDDD', hikeid)
+                    this.notify(); this.onHikeClick()}} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to Hike List</a></td>
               </tr>
             )}
           </tbody>

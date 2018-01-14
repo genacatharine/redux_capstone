@@ -4,18 +4,16 @@ import Cookies from 'universal-cookie';
 // import jwt_decode from 'jwt-decode';
 
 var token = localStorage.getItem('token')
-var user = localStorage.getItem('user')
+console.log('TOKENNNNNNNNN', token);
+// var user = localStorage.getItem('user')
 
-function parseJwt (token) {
+function parseJwt (x) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace('-', '+').replace('_', '/');
             return JSON.parse(window.atob(base64));
         };
 var decoded = parseJwt(token)
 decoded= decoded.userId
-
-
-
 console.log('DECODED TOKENNNNNNN IS HERE ON FRONT END LOCAL', decoded)
 
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
@@ -101,16 +99,19 @@ export const registerUser = (credentials) => {
 }
 
 export const ADD_HIKE = 'ADD_HIKE'
+// export const addHike = (clientToken, hikeid) => {
 export const addHike = (x, clientToken, hikeid) => {
+  // console.log(clientToken, hikeid)
   return async (dispatch) => {
 
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/4`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${hikeid}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ x, clientToken, hikeid })
+      body: JSON.stringify({ clientToken, hikeid })
+      // body: JSON.stringify({ x, clientToken, hikeid })
     })
     console.log('REQUESTTTTTTTT', request.body)
     const raw = await request.status
@@ -118,10 +119,6 @@ export const addHike = (x, clientToken, hikeid) => {
   }
 }
 
-// export const VIEW_MYHIKES = 'VIEW_MYHIKES'
-// export const viewHikes= (list)=>{
-//   return async
-// }
 
 async function request(path, method = 'GET', body = null) {
   if (body) body = JSON.stringify(body)
