@@ -18,7 +18,7 @@ class HikeList extends Component {
 
     this.onHikeClick = this.onHikeClick.bind(this)
   }
-  onHikeClick(event) {
+  onHikeClick(id, name) {
     // event.preventDefault();
     var clientToken = localStorage.getItem('token');
     function parseJwt (token) {
@@ -29,10 +29,13 @@ class HikeList extends Component {
     clientToken = parseJwt(clientToken)
     clientToken = clientToken.userId
 
-    var hikeid = $(this).data("hike-id")
-    console.log('HIKEEEEIDDDDDDnumber1', hikeid)
 
-    this.props.addHike(this.state.addedhikes, clientToken, hikeid)
+
+    // var hikeid = $(this).data("hikeid")
+    console.log('HIKEEEEIDDDDDDnumber1', this )
+    console.log('HIKEEEEIDDDDDDnumber2', name)
+
+    this.props.addHike(this.state.addedhikes, clientToken, id, name)
     this.setState({addedhikes: ''})
 
   }
@@ -73,9 +76,7 @@ class HikeList extends Component {
                 <td><a href={"http://maps.google.com/?q="+ ((x.geometry.coordinates).reverse())} target="_blank">Link to Map</a></td>
                 <td>
                   <a onClick={ (e) => {
-                    // var hikeid = $(this).attr("data-hike-id")
-                    // console.log('HIKEEEEIDDDDDD', hikeid)
-                    this.notify(); this.onHikeClick()}} href="#" class="addToHikeList" data-hike-id={x.id} data-hike-name={x.name}>Add to Hike List</a></td>
+                    this.notify(); this.onHikeClick(x.id, x.name)}} href="#" class="addToHikeList" key={x.id} data-hikeid={x.id} data-hike-name={x.name}>Add to Hike List</a></td>
               </tr>
             )}
           </tbody>

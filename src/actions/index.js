@@ -4,8 +4,7 @@ import Cookies from 'universal-cookie';
 // import jwt_decode from 'jwt-decode';
 
 var token = localStorage.getItem('token')
-console.log('TOKENNNNNNNNN', token);
-// var user = localStorage.getItem('user')
+// console.log('TOKEN', token);
 
 function parseJwt (x) {
             var base64Url = token.split('.')[1];
@@ -14,7 +13,7 @@ function parseJwt (x) {
         };
 var decoded = parseJwt(token)
 decoded= decoded.userId
-console.log('DECODED TOKENNNNNNN IS HERE ON FRONT END LOCAL', decoded)
+// console.log('DECODED TOKEN', decoded)
 
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
 
@@ -100,22 +99,22 @@ export const registerUser = (credentials) => {
 
 export const ADD_HIKE = 'ADD_HIKE'
 // export const addHike = (clientToken, hikeid) => {
-export const addHike = (x, clientToken, hikeid) => {
-  // console.log(clientToken, hikeid)
+export const addHike = (x, clientToken, id, name) => {
+  console.log('clienttoken', clientToken,'id', id)
   return async (dispatch) => {
 
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${hikeid}`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ clientToken, hikeid })
+      body: JSON.stringify({ clientToken, id, name })
       // body: JSON.stringify({ x, clientToken, hikeid })
     })
     console.log('REQUESTTTTTTTT', request.body)
     const raw = await request.status
-    console.log('rawwwww', raw)
+    // console.log('rawwwww', raw)
   }
 }
 
