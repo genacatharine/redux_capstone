@@ -13,14 +13,6 @@ class toHikeList extends Component {
 
   componentWillMount=()=> {
 
-//     function parseJwt (x) {
-//           var base64Url = clientToken.split('.')[1];
-//           var base64 = base64Url.replace('-', '+').replace('_', '/');
-//           return JSON.parse(window.atob(base64));
-//       };
-// clientToken = parseJwt(clientToken)
-// console.log('clientttttokenenenennenenen', clientToken.userId);
-
     const clientToken = localStorage.getItem('token');
 
     console.log('clientToken', clientToken);
@@ -28,15 +20,15 @@ class toHikeList extends Component {
     this.props.seeHikes(clientToken)
   }
 
-  // uploadWidget() {
-  //   window.cloudinary.openUploadWidget({
-  //     cloud_name: 'db77jltpp',
-  //     upload_preset: 'bqq0uexy',
-  //     tags: ['xmas']
-  //   }, function(error, result) {
-  //     console.log(result);
-  //   });
-  // }
+  uploadWidget() {
+    window.cloudinary.openUploadWidget({
+      cloud_name: 'db77jltpp',
+      upload_preset: 'bqq0uexy',
+      tags: ['xmas']
+    }, function(error, result) {
+      console.log(result);
+    });
+  }
 
   render() {
     const hikes = this.props.myhikes;
@@ -55,7 +47,7 @@ class toHikeList extends Component {
             // console.log(hike);
             return (
 
-            <ListGroupItem className="itemli" key={hike.id}>{hike.hike_name}<br /><button>Delete</button>
+            <ListGroupItem className="itemli" key={hike.id}>{hike.hike_name}<br /><button onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image</button>
           </ListGroupItem>
           )}
           )}
