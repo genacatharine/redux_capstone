@@ -6,6 +6,8 @@ import './tohikelist.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {seeHikes} from '../actions'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
+
 
 class toHikeList extends Component {
 
@@ -41,7 +43,6 @@ class toHikeList extends Component {
 
     if (hikes.length === 0) return <p>Loading...</p>
 
-    console.log('HIKESPROPSSSSSSS', hikes)
     return (
       <div className="tohikelistcontainer">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
@@ -49,12 +50,16 @@ class toHikeList extends Component {
         <Header/>
         <h1>My Hike List</h1>
         <div className="upload">
+          <ListGroup>
           {hikes.map((hike) => {
-            console.log(hike);
+            // console.log(hike);
             return (
-            <li key={hike.id}>{hike.hike_name}</li>
+
+            <ListGroupItem className="itemli" key={hike.id}>{hike.hike_name}<br /><button>Delete</button>
+          </ListGroupItem>
           )}
           )}
+        </ListGroup>
         </div>
       </div>
 
