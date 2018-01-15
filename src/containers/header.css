@@ -1,5 +1,8 @@
 .navbar-container, .navbar-default, .navbar-brand {
   font-family: 'Permanent Marker';
-  color:black important;
+  color: black important;
+}
 
+.navbar-brand {
+  font-size: 25px !important;
 }

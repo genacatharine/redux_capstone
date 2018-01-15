@@ -9,12 +9,12 @@ import HikeList from './hike_list.js'
 import Cookies from 'universal-cookie';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      term: '',
-      // authorized: false
-    }
+constructor(props) {
+  super(props);
+  this.state = {
+    term: '',
+    // authorized: false
+  }
 
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)

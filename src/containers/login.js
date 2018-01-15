@@ -48,19 +48,19 @@ class Login extends Component {
     return (
       <div className="logincontainer">
         <Header/>
-                <div className="innercontainer">
-        <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Email</label>
-          <input id="email-input" name="email" type="email" placeholder="Email"/>
-          <br/>
-          <label>Password</label>
-          <input id="password-input" name="password" type="password" placeholder="Password"/>
+        <div className="innercontainer">
+          <h1>Log In</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>Email</label>
+            <input id="email-input" name="email" type="email" placeholder="Email"/>
+            <br/>
+            <label>Password</label>
+            <input id="password-input" name="password" type="password" placeholder="Password"/>
 
-          <button type="submit">Sign in</button>
+            <button type="submit">Sign in</button>
 
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
     )
   }

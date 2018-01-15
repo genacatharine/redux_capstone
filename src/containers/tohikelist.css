@@ -1,13 +1,14 @@
 .tohikelistcontainer {
   text-align: center !important;
-  font-family:'Permanent Marker' !important;
+  font-family: 'Permanent Marker' !important;
   background-image: url('https://res.cloudinary.com/simpleview/image/upload/c_fill,f_auto,h_360,q_50,w_1024/v1/clients/boulder/flat_irons_sun_streaming_9077e29f-487c-4864-b992-24283d547c94.png');
-  /*height: 100vh;*/
+  height: 100vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 ol {
   list-style-position: inside;
 }
@@ -18,9 +19,17 @@ li {
   padding-bottom: 10px
 }
 
+.navbar-container, .navbar-default, .navbar-brand {
+  font-family: 'Permanent Marker';
+  color: black important;
+}
+
+.navbar-brand {
+  font-size: 25px !important;
+}
+
 .blog {
-  border: 1px
-  solid #999999;
+  border: 1px solid #999999;
   padding: 5px;
 }
 

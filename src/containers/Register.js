@@ -1,11 +1,5 @@
 import React, {Component} from 'react'
-import {
-  Form,
-  FormGroup,
-  Col,
-  Button,
-  ControlLabel
-} from 'react-bootstrap'
+import {Form, FormGroup, Col, Button, ControlLabel} from 'react-bootstrap'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {registerUser} from '../actions'
@@ -39,22 +33,22 @@ class Register extends Component {
   render() {
     return (
       <div className="registercontainer">
-        <Header />
+        <Header/>
         <div className="innercontainer">
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-        <label>Email</label>
-              <input id="email-input" name="email" type="email" placeholder="Email"/>
-<br />
-<label>
+          <h1>Register</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>Email</label>
+            <input id="email-input" name="email" type="email" placeholder="Email"/>
+            <br/>
+            <label>
               Password</label>
 
-              <input id="password-input" name="password" type="password" placeholder="Password"/>
+            <input id="password-input" name="password" type="password" placeholder="Password"/>
 
-              <Button type="submit">Register</Button>
+            <Button type="submit">Register</Button>
 
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
     )
   }
