@@ -8,10 +8,6 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case LOG_IN_SUCCESS:
       localStorage.setItem('token', action.payload)
-
-
-      console.log('LOCALSTORAGEeeee', localStorage.token)
-      // console.log('actionpayload', action.payload);
       return action.payload;
     default:
       return state;

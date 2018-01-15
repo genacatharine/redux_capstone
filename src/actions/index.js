@@ -1,5 +1,4 @@
 import history from '../containers/History'
-import Cookies from 'universal-cookie';
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
 var token = localStorage.getItem('token')
 
@@ -35,8 +34,6 @@ export const loginUser = (credentials) => {
 
     const body = await request.json();
 
-    console.log(body);
-
     return dispatch({type: LOG_IN_SUCCESS, payload: body.token})
   };
 }
@@ -44,7 +41,6 @@ export const loginUser = (credentials) => {
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const registerUser = (credentials) => {
   return async(dispatch) => {
-    // console.log(credentials)
     const request = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       headers: {
@@ -90,28 +86,26 @@ export const seeHikes = (clientToken) => {
       }
     })
     const hikes = await request.json()
-    console.log('get sheets response is: ', hikes);
 
     dispatch({type: VIEW_MYHIKES, payload: hikes})
   }
 }
 
 export const ADD_IMG = 'ADD_IMG'
-export const addImage = (image) => {
+export const addImage = (image, id) => {
   console.log('IMAGE', image);
-  // return async (dispatch) => {
-  //     const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json',
-  //       },
-  //       body: JSON.stringify({ image })
-  //     })
-
-  //     const raw = await request.status
-
-  //   }
+  return async (dispatch) => {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ image })
+      })
+      let image = await request.json()
+         return image
+}
 }
 //
 // export const DELETE_HIKE = 'DELETE_HIKE'

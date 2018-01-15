@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import './header.css'
 import {connect} from 'react-redux';
-import Cookies from 'universal-cookie';
 
 const Header = (props) => {
   return (

@@ -6,7 +6,8 @@ import './tohikelist.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
 import {seeHikes} from '../actions'
-import {deleteHike} from '../actions'
+// import {deleteHike} from '../actions'
+import {addImage} from '../actions'
 import {ListGroup, ListGroupItem, NavItem, Navbar, Nav} from 'react-bootstrap'
 
 class toHikeList extends Component {
@@ -15,33 +16,28 @@ class toHikeList extends Component {
     const clientToken = localStorage.getItem('token');
     // console.log('clientToken', clientToken);
     this.props.seeHikes(clientToken)
+    const thumbnailToken= localStorage.getItem('imgurl')
+    console.log('thumbnailToken', thumbnailToken);
     // this.props.deleteHike(hikeid)
-    // this.props.addImage()
+    // this.props.addImage(thumbnailToken)
   }
 
-  onDelete(id, hike_name) {
-    console.log('DELETE BUTTON CLICK');
-    console.log('HIKE IN DELETE', id)
-    // event.preventDefault();
-    // this.props.deleteHike(this.state.addedhikes, clientToken, id, name)
-    // var clientToken = localStorage.getItem('token');
-    this.props.deleteHike(id, hike_name)
-  };
+  // onDelete(id, hike_name) {
+    // this.props.deleteHike(id, hike_name)
+  // };
 
   uploadWidget(id, hike_name, image) {
     window.cloudinary.openUploadWidget({
       cloud_name: 'db77jltpp',
-      upload_preset: 'bqq0uexy',
-      tags: ['xmas']
+      upload_preset: 'bqq0uexy', multiple: 'false', resource_type: 'image'
     }, function(error, result) {
-      let image = result[0].thumbnail_url
-      console.log(image);
-      this.props.addImage(image)
+           const imageUrl = result[0].secure_url
+           const thumbnailUrl = result[0].thumbnail_url
+           console.log('thumbnail url: ', thumbnailUrl);
     });
   }
 
   render() {
-    console.log('THISPROPS', this.props)
     const hikes = this.props.myhikes;
 
     if (hikes.length === 0)
@@ -72,7 +68,6 @@ class toHikeList extends Component {
         <div className="upload">
           <ListGroup>
             {hikes.map((hike) => {
-              // console.log(hike);
               return (
                 <ListGroupItem className="itemli" key={hike.id}>{hike.hike_name}<br/>
                   <button onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image</button>
