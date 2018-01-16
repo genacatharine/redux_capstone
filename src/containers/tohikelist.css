@@ -50,3 +50,8 @@ button {
 .itemli {
   color: black;
 }
+
+.thumbnailimage {
+  width: 70px;
+  height: 70px;
+}

@@ -33,7 +33,7 @@ export const loginUser = (credentials) => {
     });
 
     const body = await request.json();
-
+    console.log(body.token)
     return dispatch({type: LOG_IN_SUCCESS, payload: body.token})
   };
 }
@@ -59,17 +59,21 @@ export const registerUser = (credentials) => {
 }
 
 export const ADD_HIKE = 'ADD_HIKE'
-export const addHike = (x, clientToken, id, name) => {
+export const addHike = (userId, hike_id, hikename, clientToken) => {
   return async(dispatch) => {
+    // console.log(userId, hikeId, hikeName, realClientToken)
 
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
+// clientToken, hikename, thumbnailUrl
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${1}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({clientToken, id, name})
+      body: JSON.stringify({userId, clientToken, hike_id, hikename})
     })
+    // (clientToken, hike_id, hikename)
+
     const raw = await request.status
   }
 }
@@ -93,8 +97,10 @@ export const seeHikes = (clientToken) => {
 
 export const ADD_IMG = 'ADD_IMG'
 export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
-  // console.log('ID', thumbnailUrl);
-  console.log('HIKEID', hike_id);
+  console.log('thumbnail in action', thumbnailUrl);
+  // console.log('HIKEID', hike_id);
+  // console.log(id)
+  // console.log(hike_id)
   return async (dispatch) => {
       const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
         method: 'POST',
@@ -102,13 +108,12 @@ export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ thumbnailUrl, clientToken, hike_name, hike_id})
+        body: JSON.stringify({ thumbnailUrl, clientToken, hike_name, hike_id, id})
       })
       let image = await request.json()
   // console.log('image request', image);
          return image
 }
-
 }
 //
 // export const DELETE_HIKE = 'DELETE_HIKE'

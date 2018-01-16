@@ -17,8 +17,10 @@ class HikeList extends Component {
 
     this.onHikeClick = this.onHikeClick.bind(this)
   }
-  onHikeClick(id, name) {
+  onHikeClick(hikeId, hikeName) {
+    console.log(hikeId, hikeName)
     // event.preventDefault();
+    let realClientToken = localStorage.getItem('token');
     var clientToken = localStorage.getItem('token');
     function parseJwt(token) {
       var base64Url = token.split('.')[1];
@@ -26,9 +28,11 @@ class HikeList extends Component {
       return JSON.parse(window.atob(base64));
     };
     clientToken = parseJwt(clientToken)
-    clientToken = clientToken.userId
+    let userId = clientToken.userId
 
-    this.props.addHike(this.state.addedhikes, clientToken, id, name)
+    console.log(userId, hikeId, hikeName, realClientToken)
+
+    this.props.addHike(userId, hikeId, hikeName, realClientToken)
     // this.setState({addedhikes: ''})
 
   }
@@ -69,7 +73,7 @@ class HikeList extends Component {
                   <a onClick={(e) => {
                     this.notify();
                     this.onHikeClick(x.id, x.name)
-                  }} href="#" class="addToHikeList" key={x.id} data-hikeid={x.id} data-hike-name={x.name}>Add to Hike List</a>
+                  }} href="#" className="addToHikeList" key={x.id} data-hikeid={x.id} data-hike-name={x.name}>Add to Hike List</a>
                 </td>
               </tr>)}
             </tbody>

@@ -38,7 +38,7 @@ class toHikeList extends Component {
       cloud_name: 'db77jltpp',
       upload_preset: 'bqq0uexy', multiple: 'false', resource_type: 'image'
     }, (error, result) => {
-      console.log('HIKEIDDDD', hike_name);
+      console.log('result!!!', hike_name);
           const thumbnailUrl = result[0].thumbnail_url
           console.log('THUMB', thumbnailUrl);
           this.props.addImage(thumbnailUrl, clientToken, id, hike_name, hike_id)
@@ -77,9 +77,13 @@ class toHikeList extends Component {
           <ListGroup>
             {hikes.map((hike) => {
               return (
-                <ListGroupItem className="itemli" key={hike.hike_id}>{hike.hike_name}<br/><img src={hike.img_thumbnail}></img><br />
-                  <button onClick={() => this.uploadWidget(hike.id, hike.hike_name, hike.hike_id)} className="upload-button">Add Image</button>
-                  <button onClick={() => this.onDelete(hike.id, hike.hike_name, hike.hike_id, hike.img_thumbnail)}>Delete Hike</button>
+                <ListGroupItem className="itemli" key={hike.hike_id}>{hike.hike_name}
+                  <br/>
+                <img className="img-rounded thumbnailimage" src={hike.img_thumbnail}></img>
+                <br />
+                  <button onClick={(e) => this.uploadWidget(hike.id, hike.hike_name, hike.hike_id, hike.img_thumbnail)}
+                    className="upload-button">Add Image</button>
+                  {/* <button onClick={() => this.onDelete(hike.id, hike.hike_name, hike.hike_id, hike.img_thumbnail)}>Delete Hike</button> */}
                 </ListGroupItem>
               )
             })}
