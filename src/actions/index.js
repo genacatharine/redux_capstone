@@ -103,7 +103,7 @@ export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
   // console.log(hike_id)
   return async (dispatch) => {
       const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
