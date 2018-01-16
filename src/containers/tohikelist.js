@@ -11,13 +11,19 @@ import {addImage} from '../actions'
 import {ListGroup, ListGroupItem, NavItem, Navbar, Nav} from 'react-bootstrap'
 
 class toHikeList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addedimages: []
+    }
+  }
 
   componentWillMount = () => {
     const clientToken = localStorage.getItem('token');
     // console.log('clientToken', clientToken);
     this.props.seeHikes(clientToken)
-    const thumbnailToken= localStorage.getItem('imgurl')
-    console.log('thumbnailToken', thumbnailToken);
+    // const thumbnailToken= localStorage.getItem('imgurl')
+    // console.log('thumbnailToken', thumbnailToken);
     // this.props.deleteHike(hikeid)
     // this.props.addImage(thumbnailToken)
   }
@@ -26,14 +32,16 @@ class toHikeList extends Component {
     // this.props.deleteHike(id, hike_name)
   // };
 
-  uploadWidget(id, hike_name, image) {
+  uploadWidget = (id, hike_name, hike_id) => {
+    const clientToken = localStorage.getItem('token');
     window.cloudinary.openUploadWidget({
       cloud_name: 'db77jltpp',
       upload_preset: 'bqq0uexy', multiple: 'false', resource_type: 'image'
-    }, function(error, result) {
-           const imageUrl = result[0].secure_url
-           const thumbnailUrl = result[0].thumbnail_url
-           console.log('thumbnail url: ', thumbnailUrl);
+    }, (error, result) => {
+      console.log('HIKEIDDDD', hike_name);
+          const thumbnailUrl = result[0].thumbnail_url
+          console.log('THUMB', thumbnailUrl);
+          this.props.addImage(thumbnailUrl, clientToken, id, hike_name, hike_id)
     });
   }
 
@@ -69,11 +77,11 @@ class toHikeList extends Component {
           <ListGroup>
             {hikes.map((hike) => {
               return (
-                <ListGroupItem className="itemli" key={hike.id}>{hike.hike_name}<br/>
-                  <button onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image</button>
-                  <button onClick={(e) => {
+                <ListGroupItem className="itemli" key={hike.hike_id}>{hike.hike_name}<br/>
+                  <button onClick={() => this.uploadWidget(hike.id, hike.hike_name, hike.hike_id)} className="upload-button">Add Image</button>
+                  {/* <button onClick={(e) => {
                     this.onDelete(hike.id, hike.hike_name)
-                  }}>Delete</button>
+                  }}>Delete</button> */}
                 </ListGroupItem>
               )
             })}
@@ -92,7 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => bindActionCreators({
   seeHikes,
   // deleteHike,
-  // addImage
+  addImage
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(toHikeList)

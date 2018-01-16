@@ -29,7 +29,7 @@ class HikeList extends Component {
     clientToken = clientToken.userId
 
     this.props.addHike(this.state.addedhikes, clientToken, id, name)
-    this.setState({addedhikes: ''})
+    // this.setState({addedhikes: ''})
 
   }
 

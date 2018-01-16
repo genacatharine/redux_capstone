@@ -92,8 +92,9 @@ export const seeHikes = (clientToken) => {
 }
 
 export const ADD_IMG = 'ADD_IMG'
-export const addImage = (image, id) => {
-  console.log('IMAGE', image);
+export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
+  // console.log('ID', thumbnailUrl);
+  console.log('HIKEID', hike_id);
   return async (dispatch) => {
       const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
         method: 'POST',
@@ -101,11 +102,13 @@ export const addImage = (image, id) => {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ image })
+        body: JSON.stringify({ thumbnailUrl, clientToken, hike_name, hike_id})
       })
       let image = await request.json()
+  // console.log('image request', image);
          return image
 }
+
 }
 //
 // export const DELETE_HIKE = 'DELETE_HIKE'
