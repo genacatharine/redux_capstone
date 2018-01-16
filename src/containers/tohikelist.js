@@ -38,8 +38,9 @@ class toHikeList extends Component {
       cloud_name: 'db77jltpp',
       upload_preset: 'bqq0uexy', multiple: 'false', resource_type: 'image'
     }, (error, result) => {
-      console.log('result!!!', hike_name);
-          const thumbnailUrl = result[0].thumbnail_url
+      // console.log('result!!!', hike_name);
+          // const thumbnailUrl = result[0].thumbnail_url
+          const thumbnailUrl= result[0].secure_url
           console.log('THUMB', thumbnailUrl);
           this.props.addImage(thumbnailUrl, clientToken, id, hike_name, hike_id)
     });

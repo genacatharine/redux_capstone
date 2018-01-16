@@ -111,7 +111,7 @@ export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
         body: JSON.stringify({ thumbnailUrl, clientToken, hike_name, hike_id, id})
       })
       let image = await request.json()
-  // console.log('image request', image);
+      console.log('image request', image);
          return image
 }
 }
