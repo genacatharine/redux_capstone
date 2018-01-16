@@ -80,6 +80,7 @@ export const addHike = (userId, hike_id, hikename, clientToken) => {
 
 export const VIEW_MYHIKES = 'VIEW_MYHIKES'
 export const seeHikes = (clientToken) => {
+  console.log("called seeHikes");
   return async(dispatch) => {
 
     const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {
@@ -90,17 +91,14 @@ export const seeHikes = (clientToken) => {
       }
     })
     const hikes = await request.json()
-
+console.log('HIKES', hikes);
     dispatch({type: VIEW_MYHIKES, payload: hikes})
   }
 }
 
 export const ADD_IMG = 'ADD_IMG'
+export const UPDATE_MYHIKES = 'UPDATE_MYHIKES'
 export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
-  console.log('thumbnail in action', thumbnailUrl);
-  // console.log('HIKEID', hike_id);
-  // console.log(id)
-  // console.log(hike_id)
   return async (dispatch) => {
       const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist/${id}`, {
         method: 'PATCH',
@@ -110,10 +108,11 @@ export const addImage = (thumbnailUrl, clientToken, id, hike_name, hike_id) => {
         },
         body: JSON.stringify({ thumbnailUrl, clientToken, hike_name, hike_id, id})
       })
-      let image = await request.json()
-      console.log('image request', image);
-         return image
-}
+      let hike = await request.json()
+      console.log('hike after image request', hike);
+      // seeHikes(clientToken)
+      dispatch({type: UPDATE_MYHIKES, payload: hike})
+    }
 }
 //
 // export const DELETE_HIKE = 'DELETE_HIKE'

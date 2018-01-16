@@ -8,11 +8,11 @@ export default function(state=initialState, action){
 
   switch(action.type){
 
-    case ADD_IMG:
-
-      return {
-        addedimgs: action.payload
-      }
+    // case ADD_IMG:
+    //
+    //   return {
+    //     addedimgs: action.payload
+    //   }
   }
   return state;
 }
