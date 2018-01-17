@@ -2,7 +2,7 @@
   text-align: center !important;
   font-family: 'Permanent Marker' !important;
   background-image: url('https://res.cloudinary.com/simpleview/image/upload/c_fill,f_auto,h_360,q_50,w_1024/v1/clients/boulder/flat_irons_sun_streaming_9077e29f-487c-4864-b992-24283d547c94.png');
-  height: 100vh;
+  /*height: 100vh;*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ button {
   color: black;
 }
 
-.thumbnailimage {
-  width: 70px;
-  height: 70px;
+.thumbimg {
+  height:75%;
+  width:75%;
 }

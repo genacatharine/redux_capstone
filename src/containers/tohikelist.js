@@ -80,7 +80,7 @@ class toHikeList extends Component {
               return (
                 <ListGroupItem className="itemli" key={hike.hike_id}>{hike.hike_name}
                   <br/>
-                <img className="img-rounded thumbnailimage" src={hike.img_thumbnail}></img>
+                <img className="img-rounded thumbimg" src={hike.img_thumbnail}></img>
                 <br />
                   <button onClick={(e) => this.uploadWidget(hike.id, hike.hike_name, hike.hike_id, hike.img_thumbnail)}
                     className="upload-button">Add Image</button>
