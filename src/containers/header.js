@@ -3,7 +3,14 @@ import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import './header.css'
 import {connect} from 'react-redux';
 
-const Header = (props) => {
+class Header extends Component {
+  constructor(props) {
+    super(props)
+    // console.log(props)
+  }
+
+render() {
+  // console.log(this.props.auth);
   return (
     <div className="navbar-container">
       <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
@@ -14,13 +21,13 @@ const Header = (props) => {
         <Navbar.Toggle/>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem href="/register">{props.auth
+            <NavItem href="/register">{this.props.auth
                 ? ''
                 : 'Register'}</NavItem>
-            <NavItem href="/tohikelist">{props.auth
+            <NavItem href="/tohikelist">{this.props.auth
                 ? 'My Hike List'
                 : ''}</NavItem>
-            <NavItem href="/login">{props.auth
+            <NavItem href="/login">{this.props.auth
                 ? 'Log Out'
                 : 'Log In'}</NavItem>
           </Nav>
@@ -28,6 +35,8 @@ const Header = (props) => {
       </Navbar>
     </div>
   )
+}
+
 }
 
 function mapStateToProps(state) {

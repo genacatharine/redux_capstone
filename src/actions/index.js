@@ -81,6 +81,7 @@ export const addHike = (userId, hike_id, hikename, clientToken) => {
 export const VIEW_MYHIKES = 'VIEW_MYHIKES'
 export const seeHikes = (clientToken) => {
   console.log("called seeHikes");
+  console.log('clientoken in action', clientToken);
   return async(dispatch) => {
 
     const request = await fetch(`${process.env.REACT_APP_API_URL}/tohikelist`, {

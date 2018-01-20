@@ -5,9 +5,8 @@ import cloudinary from 'cloudinary-core';
 import './tohikelist.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {seeHikes} from '../actions'
-// import {deleteHike} from '../actions'
-import {addImage} from '../actions'
+// import {seeHikes} from '../actions'
+import { addImage, loginUser, seeHikes } from '../actions'
 import {ListGroup, ListGroupItem, NavItem, Navbar, Nav} from 'react-bootstrap'
 
 class toHikeList extends Component {
@@ -20,17 +19,8 @@ class toHikeList extends Component {
 
   componentWillMount = () => {
     const clientToken = localStorage.getItem('token');
-    // console.log('clientToken', clientToken);
     this.props.seeHikes(clientToken)
-    // const thumbnailToken= localStorage.getItem('imgurl')
-    // console.log('thumbnailToken', thumbnailToken);
-    // this.props.deleteHike(hikeid)
-    // this.props.addImage(thumbnailToken)
   }
-
-  // onDelete(id, hike_name) {
-    // this.props.deleteHike(id, hike_name)
-  // };
 
   uploadWidget = (id, hike_name, hike_id) => {
     const clientToken = localStorage.getItem('token');
@@ -50,15 +40,15 @@ class toHikeList extends Component {
     const hikes = this.props.myhikes;
 
     if (hikes.length === 0)
-      return <p>Loading...</p>
+      return <p>Please add a hike to see your hike list!</p>
 
     return (
       <div className="tohikelistcontainer">
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"></link>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
         <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Quicksand|Rock+Salt|Spinnaker" rel="stylesheet"></link>
-        {/* <Header/> */}
-        <div className="navbar-container">
+         {/* <Header/> */}
+         <div className="navbar-container">
           <Navbar fluid collapseOnSelect>
             <Navbar.Brand>
               <a href="/" className="home">My Hiking Journal</a>
@@ -70,8 +60,8 @@ class toHikeList extends Component {
                 <NavItem href="/tohikelist">My Hike List</NavItem>
                 <NavItem href="/login">Log Out</NavItem>
               </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+          </Navbar.Collapse>
+         </Navbar>
         </div>
         <h1>My Hike List</h1>
         <div className="upload">
@@ -102,7 +92,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   seeHikes,
-  // deleteHike,
   addImage
 }, dispatch)
 
