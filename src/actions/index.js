@@ -1,6 +1,6 @@
 import history from '../containers/History'
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
-var token = localStorage.getItem('token')
+var token = localStorage.getItem('access_token')
 
 function parseJwt(x) {
   var base64Url = token.split('.')[1];
