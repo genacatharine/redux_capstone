@@ -1,14 +1,18 @@
 import history from '../containers/History'
 const ROOT_URL = 'https://api.outerspatial.com/v0/trailheads?per_page=5&distance=5&near_addr='
-var token = localStorage.getItem('access_token')
+var token = localStorage.getItem('token')
+console.log('localStoragetoken', token);
 
 function parseJwt(x) {
   var base64Url = token.split('.')[1];
+  console.log(base64Url);
   var base64 = base64Url.replace('-', '+').replace('_', '/');
   return JSON.parse(window.atob(base64));
 };
 var decoded = parseJwt(token)
+
 decoded = decoded.userId
+
 
 export const FETCH_HIKES = 'FETCH_HIKES'
 export const fetchHikes = (location) => {
